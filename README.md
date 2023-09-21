@@ -8,6 +8,7 @@ To install the depencencies run the following commands in the terminal (Command 
 
 npm init -y
 npm install discord.js
+npm install dotenv
 
 ```
 
