@@ -9,7 +9,7 @@ const welcome = require('./welcome.js')
 
 // Gateway Intents setup
 
-const client = new Client({ intents: [GatewayIntentBits.DirectMessages, GatewayIntentBits.Guilds] })
+const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildEmojisAndStickers, GatewayIntentBits.GuildIntegrations, GatewayIntentBits.GuildInvites, GatewayIntentBits.GuildMessageReactions, GatewayIntentBits.GuildModeration, GatewayIntentBits.GuildVoiceStates] })
 
 // Welcome.js setup
 

@@ -13,7 +13,7 @@ module.exports = {
     })
       .then(async => {
         const name = member.user.username
-        const id = member.uder.id
+        const id = member.user.id
 
         const accountcreated = member.user.createdAt
         const accountage = moment.duration(new Date() - accountcreated)
@@ -32,7 +32,7 @@ module.exports = {
           .setTimestamp()
           .setFooter({ text: 'Member Join log' })
 
-        mChannel.send({ embed: [MemberLogEmbed] })
+        mChannel.send({ embeds: [MemberLogEmbed] })
       })
   }
 }
