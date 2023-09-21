@@ -8,7 +8,7 @@ module.exports = {
     .setDescription('Replies with the Bot Ping'),
   async execute (interaction) {
     const pingEmbed = new EmbedBuilder()
-      .setColor('DarkRed')
+      .setColor('Red')
       .setTitle('Ping Command')
       .setAuthor({ name: 'Discord Bot' })
       .setDescription(`🏓 | Latency is: **${Date.now() - interaction.createdTimestamp}ms.**`)
