@@ -8,10 +8,11 @@ To install the depencencies run the following commands in the terminal (Command 
 
 npm init -y
 npm install discord.js
+npm install dotenv
 
 ```
 
-Make sure to install ESLint Package into your directory and run the commands bellow in terminal
+If you want you can install ESLint Package into your directory and run the commands below in terminal
 
 ```sh
 
@@ -20,9 +21,9 @@ npx eslint --init
 
 ```
 
-When making Slash commands don't forget to register you commands with a the command bellow
+When making Slash commands don't forget to register you commands with a the command below
 
-In my Build the command register is a file called deploy-coomands.js make sure this matches
+In my Build the command register is a file called deploy-commands.js make sure this matches
 Your Slash Command Register file
 
 ```sh
