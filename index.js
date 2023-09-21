@@ -1,20 +1,27 @@
 // require needed files
 
-const { Client, Collection, GatewayIntentBits } = require('discord.js')
+const { Client, Collection, GatewayIntentBits, Partials } = require('discord.js')
 require('dotenv').config()
 const fs = require('node:fs')
 const path = require('node:path')
 const token = process.env.token
 const welcome = require('./welcome.js')
+const logs = require('discord-logs')
 
 // Gateway Intents setup
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildEmojisAndStickers, GatewayIntentBits.GuildIntegrations, GatewayIntentBits.GuildInvites, GatewayIntentBits.GuildMessageReactions, GatewayIntentBits.GuildModeration, GatewayIntentBits.GuildVoiceStates] })
+const client = new Client({ intents: [Object.keys(GatewayIntentBits)], partials: [Object.keys(Partials)] })
 
 // Welcome.js setup
 
 client.on('ready', () => {
   welcome(client)
+})
+
+// Modlogs Setup
+
+logs(client, {
+  debug: true
 })
 
 // Folder Setup
@@ -25,6 +32,7 @@ const eventsPath = path.join(__dirname, 'events')
 const SlashCommandsPath = path.join(__dirname, 'SlashCommands')
 const SlashCommandsFolder = fs.readdirSync(SlashCommandsPath)
 const modlogPath = path.join(__dirname, 'modlogs')
+const modlogFolders = fs.readdirSync(modlogPath)
 
 // Slash Command Folder setup
 
@@ -58,16 +66,17 @@ for (const file of eventFiles) {
   }
 }
 
-const modlogFiles = fs.readdirSync(modlogPath).filter(file => file.endsWith('.js'))
+for (const folder of modlogFolders) {
+  const modlogsFiles = fs.readdirSync(`./modlogs/${folder}`).filter(file => file.endsWith('.js'))
 
-for (const file of modlogFiles) {
-  const filePath = path.join(modlogPath, file)
-  const event = require(filePath)
-
-  if (event.once) {
-    client.once(event.name, (...args) => event.execute(...args))
-  } else {
-    client.on(event.name, (...args) => event.execute(...args))
+  for (const file of modlogsFiles) {
+    const filePath = path.join(modlogPath, folder, file)
+    const event = require(filePath)
+    if (event.once) {
+      client.once(event.name, (...args) => event.execute(...args))
+    } else {
+      client.on(event.name, (...args) => event.execute(...args))
+    }
   }
 }
 
