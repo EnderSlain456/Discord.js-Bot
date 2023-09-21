@@ -1,16 +1,16 @@
 // Command Register File
 
 const { REST, Routes } = require('discord.js')
-const { clientId, token } = require('./config.json')
+const { clientId, token } = require('dotenv').config()
 const fs = require('node:fs')
 
 const commands = []
 
-const commandFolders = fs.readdirSync('./scommands')
+const commandFolders = fs.readdirSync('./SlashCommands')
 for (const folder of commandFolders) {
-  const commandFiles = fs.readdirSync(`./scommands/${folder}`).filter(file => file.endsWith('.js'))
+  const commandFiles = fs.readdirSync(`./SlashCommands/${folder}`).filter(file => file.endsWith('.js'))
   for (const file of commandFiles) {
-    const command = require(`./scommands/${folder}/${file}`)
+    const command = require(`./SlashCommands/${folder}/${file}`)
     commands.push(command.data.toJSON())
   }
 }
