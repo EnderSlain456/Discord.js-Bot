@@ -2,3 +2,4 @@
 .env
 welcome.js
 memberlog.js
+MessageBulkDelete.js
