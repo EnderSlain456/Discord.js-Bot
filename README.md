@@ -21,7 +21,7 @@ npx eslint --init
 
 ```
 
-When making Slash commands don't forget to register you commands with the command below
+When making Slash Commands don't forget to register you commands with the command below
 
 In my Build the command register is a file called deploy-commands.js make sure this matches
 Your Slash Command Register file
