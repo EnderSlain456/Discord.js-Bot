@@ -1,8 +1,9 @@
 // Command Register File
 
 const { REST, Routes } = require('discord.js')
-const { clientId, token } = require('dotenv').config()
+require('dotenv').config()
 const fs = require('node:fs')
+const { token, clientId } = process.env
 
 const commands = []
 
