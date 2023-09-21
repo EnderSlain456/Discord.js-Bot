@@ -13,7 +13,7 @@ module.exports = {
         if (!mes) return
         if (mes === newMessage) return
 
-        const mChannel = await message.guidl.channels.cache.get('YOUR_CHANNEL_ID')
+        const mChannel = await message.guild.channels.cache.get('YOUR_CHANNEL_ID')
 
         const MessageEditEmbed = new EmbedBuilder()
           .setColor('Blue')
