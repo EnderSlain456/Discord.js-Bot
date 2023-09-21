@@ -1,9 +1,10 @@
 // require needed files
 
 const { Client, Collection, GatewayIntentBits } = require('discord.js')
-const { token } = require('dotenv').config()
+require('dotenv').config()
 const fs = require('node:fs')
 const path = require('node:path')
+const token = process.env.token
 
 // Gateway Intents setup
 
