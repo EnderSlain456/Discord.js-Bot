@@ -4,3 +4,4 @@ welcome.js
 memberlog.js
 MessageBulkDelete.js
 MessageDelete.js
+MessageEdited.js
