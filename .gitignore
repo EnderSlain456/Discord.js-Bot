@@ -1,3 +1,4 @@
 /node_modules/
 .env
 welcome.js
+memberlog.js
