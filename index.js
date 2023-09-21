@@ -6,6 +6,9 @@ const fs = require('node:fs')
 const path = require('node:path')
 const token = process.env.token
 const welcome = require('./welcome.js')
+
+// You can install discord-logs with the command: npm insall discord-logs
+
 const logs = require('discord-logs')
 
 // Gateway Intents setup
