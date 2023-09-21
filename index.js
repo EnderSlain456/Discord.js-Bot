@@ -5,10 +5,17 @@ require('dotenv').config()
 const fs = require('node:fs')
 const path = require('node:path')
 const token = process.env.token
+const welcome = require('./welcome.js')
 
 // Gateway Intents setup
 
 const client = new Client({ intents: [GatewayIntentBits.DirectMessages, GatewayIntentBits.Guilds] })
+
+// Welcome.js setup
+
+client.on('ready', () => {
+  welcome(client)
+})
 
 // Command setup
 
