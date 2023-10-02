@@ -1,9 +1,7 @@
-// Member join log
-
-// You can install moment by running: npm install moment
-
 const { Events, AuditLogEvent, EmbedBuilder } = require('discord.js')
 const moment = require('moment')
+require('dotenv').config()
+const joinlogchannel = process.env.joinlogchannel
 
 module.exports = {
   name: Events.GuildMemberAdd,
@@ -19,7 +17,7 @@ module.exports = {
         const accountage = moment.duration(new Date() - accountcreated)
         const avatarURL = member.user.displayAvatarURL()
 
-        const mChannel = member.guild.channels.cache.get('YOUR_CHANNEL_ID')
+        const mChannel = member.guild.channels.cache.get(joinlogchannel)
 
         const MemberLogEmbed = new EmbedBuilder()
           .setColor('Blue')

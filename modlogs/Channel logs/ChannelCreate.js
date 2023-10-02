@@ -1,5 +1,6 @@
-/* eslint-disable eqeqeq */
 const { Events, AuditLogEvent, EmbedBuilder } = require('discord.js')
+require('dotenv').config()
+const logchannel = process.env.logchannel
 
 module.exports = {
   name: Events.ChannelCreate,
@@ -24,7 +25,7 @@ module.exports = {
         if (type == 12) type = 'Private Thread'
         if (type == 10) type = 'Announcement Thread'
 
-        const mChannel = await channel.guild.channels.cache.get('YOUR_CHANNEL_ID')
+        const mChannel = await channel.guild.channels.cache.get(logchannel)
 
         const ChannelCreatedembed = new EmbedBuilder()
           .setColor('Green')

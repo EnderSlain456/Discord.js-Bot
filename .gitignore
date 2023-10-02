@@ -1,8 +1,2 @@
 /node_modules/
 .env
-welcome.js
-memberlog.js
-MessageBulkDelete.js
-MessageDelete.js
-MessageEdited.js
-ChannelCreate.js

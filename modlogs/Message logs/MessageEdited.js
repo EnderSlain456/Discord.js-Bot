@@ -1,4 +1,8 @@
 const { Events, AuditLogEvent, EmbedBuilder } = require('discord.js')
+require('dotenv').config()
+const logchannel = process.env.logchannel
+
+
 module.exports = {
   name: Events.MessageUpdate,
   async execute (message, newMessage) {
@@ -13,7 +17,7 @@ module.exports = {
         if (!mes) return
         if (mes === newMessage) return
 
-        const mChannel = await message.guild.channels.cache.get('YOUR_CHANNEL_ID')
+        const mChannel = await message.guild.channels.cache.get(logchannel)
 
         const MessageEditEmbed = new EmbedBuilder()
           .setColor('Blue')

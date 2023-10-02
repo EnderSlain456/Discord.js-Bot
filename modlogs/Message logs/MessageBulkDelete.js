@@ -1,4 +1,6 @@
 const { Events, AuditLogEvent, EmbedBuilder } = require('discord.js')
+require('dotenv').config()
+const logchannel = process.env.logchannel
 
 module.exports = {
   name: Events.MessageBulkDelete,
@@ -12,7 +14,7 @@ module.exports = {
 
         const { executor } = entry
 
-        const mChannel = await messages.first().guild.channels.cache.get('YOUR_CHANNEL_ID')
+        const mChannel = await messages.first().guild.channels.cache.get(logchannel)
 
         const MessageBulkDeleteEmbed = new EmbedBuilder()
           .setColor('Red')

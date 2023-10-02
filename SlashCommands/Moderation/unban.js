@@ -19,9 +19,7 @@ module.exports = {
 
     await interaction.guild.bans.fetch()
       .then(async bans => {
-        // eslint-disable-next-line eqeqeq
         if (bans.size == 0) return await interaction.reply({ content: 'There is no one banned from this guild', ephemeral: true })
-        // eslint-disable-next-line eqeqeq
         const bannedID = bans.find(ban => ban.user.id == userID)
         if (!bannedID) return await interaction.reply({ content: 'The ID Stated is not banned from the server', ephemeral: true })
 
