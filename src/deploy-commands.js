@@ -7,9 +7,9 @@ const { token, clientId } = process.env
 
 const commands = []
 
-const commandFolders = fs.readdirSync('./SlashCommands')
+const commandFolders = fs.readdirSync('./src/SlashCommands')
 for (const folder of commandFolders) {
-  const commandFiles = fs.readdirSync(`./SlashCommands/${folder}`).filter(file => file.endsWith('.js'))
+  const commandFiles = fs.readdirSync(`./src/SlashCommands/${folder}`).filter(file => file.endsWith('.js'))
   for (const file of commandFiles) {
     const command = require(`./SlashCommands/${folder}/${file}`)
     commands.push(command.data.toJSON())
