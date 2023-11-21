@@ -1,5 +1,6 @@
 const { Events, AuditLogEvent, EmbedBuilder } = require('discord.js')
-const logchannel = require('../../utils/config.json')
+require('dotenv').config()
+const logchannel = process.env.logchannel
 
 
 module.exports = {

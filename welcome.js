@@ -1,5 +1,6 @@
 const { EmbedBuilder } = require('discord.js')
-const { welcomechannel } = require('./utils/config.json')
+require('dotenv').config()
+const welcomechannel = process.env.welcomechannel
 
 module.exports = client => {
   client.on('guildMemberAdd', async (member) => {

@@ -1,6 +1,7 @@
 const { Events, AuditLogEvent, EmbedBuilder } = require('discord.js')
 const moment = require('moment')
-const joinlogchannel = require('../../utils/config.json')
+require('dotenv').config()
+const joinlogchannel = process.env.joinlogchannel
 
 module.exports = {
   name: Events.GuildMemberAdd,

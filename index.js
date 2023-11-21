@@ -7,10 +7,6 @@ const path = require('node:path')
 const token = process.env.token
 const welcome = require('./welcome.js')
 
-// You can install discord-logs with the command: npm insall discord-logs
-
-const logs = require('discord-logs')
-
 // Gateway Intents setup
 
 const client = new Client({ intents: [Object.keys(GatewayIntentBits)], partials: [Object.keys(Partials)] })
@@ -20,13 +16,6 @@ const client = new Client({ intents: [Object.keys(GatewayIntentBits)], partials:
 client.on('ready', () => {
   welcome(client)
 })
-
-// Modlogs Setup
-
-logs(client, {
-  debug: true
-})
-
 // Folder Setup
 
 client.commands = new Collection()
@@ -40,7 +29,7 @@ const modlogFolders = fs.readdirSync(modlogPath)
 // Slash Command Folder setup
 
 for (const folder of SlashCommandsFolder) {
-  const SlashCommandsFiles = fs.readdirSync(`src/SlashCommands/${folder}`).filter(file => file.endsWith('.js'))
+  const SlashCommandsFiles = fs.readdirSync(`./SlashCommands/${folder}`).filter(file => file.endsWith('.js'))
 
   for (const file of SlashCommandsFiles) {
     const filePath = path.join(SlashCommandsPath, folder, file)
@@ -70,7 +59,7 @@ for (const file of eventFiles) {
 }
 
 for (const folder of modlogFolders) {
-  const modlogsFiles = fs.readdirSync(`src/modlogs/${folder}`).filter(file => file.endsWith('.js'))
+  const modlogsFiles = fs.readdirSync(`./modlogs/${folder}`).filter(file => file.endsWith('.js'))
 
   for (const file of modlogsFiles) {
     const filePath = path.join(modlogPath, folder, file)
@@ -87,7 +76,7 @@ for (const folder of modlogFolders) {
 client.on('error', console.error)
 
 process.on('unhandledRejection', error => {
-  console.error('unhandled Rejection:'), error.stack
+  console.error('unhandled Rejection:', error.stack)
 })
 
 // logging into Discord Bot
