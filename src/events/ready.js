@@ -1,12 +1,13 @@
 // Discord Bot on Ready Event
 
 const { Events, ActivityType } = require('discord.js')
+const chalk = require('chalk')
 
 module.exports = {
   name: Events.ClientReady,
   once: true,
   execute (client) {
-    console.log(`Discord Bot is Online! | ${client.user.tag}`)
+    console.log(chalk.green(`Discord Bot is Online! | ${chalk.blue(client.user.tag)}`))
 
     // The Status can either be ( online, idle, dnd, offline)
     client.user.setStatus('idle')

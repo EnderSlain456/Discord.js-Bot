@@ -5,7 +5,7 @@ const { SlashCommandBuilder, EmbedBuilder, PermissionsBitField } = require('disc
 module.exports = {
 
   data: new SlashCommandBuilder()
-    .setName('purge')
+    .setName('delete')
     .setDescription('Deletes Channel Messages')
     .addIntegerOption(option => option.setName('amount').setDescription('The ammount of Messages to Delete').setMinValue(1).setMaxValue(100).setRequired(true)),
   async execute (interaction) {

@@ -4,6 +4,7 @@ const { REST, Routes } = require('discord.js')
 require('dotenv').config()
 const fs = require('node:fs')
 const { token, clientId } = process.env
+const chalk = require('chalk')
 
 const commands = []
 
@@ -20,14 +21,14 @@ const rest = new REST({ version: '10' }).setToken(token);
 
 (async () => {
   try {
-    console.log(`Started refreshing ${commands.length} application (/) commands.`)
+    console.log(chalk.blue(`Started refreshing ${commands.length} application (/) commands.`))
 
     const data = await rest.put(
       Routes.applicationCommands(clientId),
       { body: commands }
     )
 
-    console.log(`Successfully reloaded ${data.length} application (/) commands.`)
+    console.log(chalk.green(`Successfully reloaded ${data.length} application (/) commands.`))
   } catch (error) {
     console.error(error)
   }
