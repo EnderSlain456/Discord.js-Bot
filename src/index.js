@@ -17,6 +17,14 @@ client.on('ready', () => {
   welcome(client)
 })
 
+// Connect to database
+
+require('./database/connect.js')()
+
+// Deploying Slash Commands
+
+require('./deploy-commands.js')
+
 // Folder Setup
 
 client.commands = new Collection()
@@ -59,6 +67,7 @@ for (const file of eventFiles) {
   }
 }
 
+// mod logs folder setup
 
 for (const folder of modlogFolders) {
   const modlogsFiles = fs.readdirSync(`${modlogPath}/${folder}`).filter(file => file.endsWith('.js'))
@@ -73,7 +82,6 @@ for (const folder of modlogFolders) {
     }
   }
 }
-
 
 // Error Handling
 client.on('error', console.error)
