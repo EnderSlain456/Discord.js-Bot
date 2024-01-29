@@ -87,7 +87,7 @@ for (const folder of modlogFolders) {
 client.on('error', console.error)
 
 process.on('unhandledRejection', error => {
-  console.error(chalk.red('[Unhandled Rejection]')), error.stack
+  console.error(chalk.red('[Unhandled Rejection]'), error.stack)
 })
 
 // logging into Discord Bot
