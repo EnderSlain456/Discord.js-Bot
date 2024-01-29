@@ -34,6 +34,8 @@ const SlashCommandsPath = path.join(__dirname, 'SlashCommands')
 const SlashCommandsFolder = fs.readdirSync(SlashCommandsPath)
 const modlogPath = path.join(__dirname, 'modlogs')
 const modlogFolders = fs.readdirSync(modlogPath)
+const securityPath = path.join(__dirname, 'security')
+const securityFolder = fs.readdirSync(securityPath)
 
 // Slash Command Folder setup
 
@@ -75,6 +77,22 @@ for (const folder of modlogFolders) {
   for (const file of modlogsFiles) {
     const filePath = path.join(modlogPath, folder, file)
     const event = require(filePath)
+    if (event.once) {
+      client.once(event.name, (...args) => event.execute(...args))
+    } else {
+      client.on(event.name, (...args) => event.execute(...args))
+    }
+  }
+}
+
+
+for (const folder of securityFolderFolder) {
+  const securityFiles = fs.readdirSync(`${securityPath}/${folder}`).filter(file => file.endsWith('.js'))
+
+  for (const file of securityFiles) {
+    const filePath = path.join(securityPath, folder, file)
+    const event = require(filePath)
+
     if (event.once) {
       client.once(event.name, (...args) => event.execute(...args))
     } else {

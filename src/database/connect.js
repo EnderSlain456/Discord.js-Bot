@@ -1,28 +1,15 @@
-const mongoose = require('mongoose')
+const mysql = require('msql')
 const chalk = require('chalk')
+require('dotenv').config()
 
-async function connect() {
-    mongoose.set('strictQuery', false)
+const pool = mysql.createPool({
+    connectionLimit: 10,
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    port: process.env.DB_PORT,
+})
 
-    try {
-        console.log(`${chalk.green('[database]')} Connecting to database...`)
-        await mongoose.connect(process.env.mongourl, {
-        })
-    } catch (err) {
-        console.log(`${chalk.red('[database]')} Error while connecting to database Error: ${err}`)
-        console.log(`${chalk.red('[database]')} Exiting...`)
-        process.exit(1)
-    }
 
-    mongoose.connection.once("open", () => {
-        console.log(`${chalk.green('[database]')} Connected to database!`)
-    })
-
-    mongoose.connection.on("error", (err) => {
-        console.log(`${chalk.red('[database]')} Error while connecting to database Error: ${err}`)
-        console.log(`${chalk.red('[database]')} Exiting...`)
-        process.exit(1)
-    })
-}
-
-module.exports = connect
+module.exports = pool
