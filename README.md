@@ -12,26 +12,6 @@ npm install dotenv
 
 ```
 
-If you want you can install ESLint Package into your directory and run the commands below in terminal
-
-```sh
-
-npm install --save-dev eslint
-npx eslint --init
-
-```
-
-When making Slash Commands don't forget to register you commands with the command below
-
-In my Build the command register is a file called deploy-commands.js make sure this matches
-Your Slash Command Register file
-
-```sh
-
-node deploy-commands.js
-
-```
-
 To run the Discord Bot run the following command in Terminal
 
 ```sh
